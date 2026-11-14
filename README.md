@@ -23,8 +23,6 @@ A simple weather website. It shows the weather for your location and lets you se
 2. Open the folder in VS Code and start it with Live Server, or run any local server.
 3. Open the page and allow location access, or search for a city.
 
-Location only works on `localhost` or `https`, not when opening the file directly.
-
 ## Files
 
 - `index.html` – the page
