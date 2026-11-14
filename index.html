@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Forecast</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu+Sans:wght@100..800&display=swap" rel="stylesheet">
+    <link rel="icon" href="images/app.svg" type="svg+xml">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <section class="skeleton" role="status" aria-label="Loading forecast">
+        <h1 class="skeleton-content">Loading<span class="dots"
+                aria-hidden="true"><span>.</span><span>.</span><span>.</span></span></h1>
+    </section>
+
+    <section class="page">
+
+        <header class="top">
+            <p class="brand">Forecast</p>
+
+            <form id="search-form" class="search" role="search">
+                <label for="city-input" class="visually-hidden">City</label>
+                <input id="city-input" name="city" type="search" placeholder="Search for a city" autocomplete="off">
+                <button type="submit">Search</button>
+                <ul id="suggestions" class="suggestions" hidden></ul>
+            </form>
+
+            <fieldset class="units">
+                <legend class="visually-hidden">Temperature unit</legend>
+                <input type="radio" name="unit" id="unit-c" value="c" checked>
+                <label for="unit-c">°C</label>
+                <input type="radio" name="unit" id="unit-f" value="f">
+                <label for="unit-f">°F</label>
+            </fieldset>
+        </header>
+        <p id="status" role="status" aria-live="polite"></p>
+
+        <main class="layout">
+
+            <section class="now" aria-labelledby="city">
+                <h1 id="city"></h1>
+                <p id="date"></p>
+
+                <p class="temp-row">
+                    <span id="temp" class="temp"></span>
+                    <span id="condition-icon" class="icon"></span>
+                </p>
+                <p id="condition" class="condition"></p>
+
+                <dl class="now-meta">
+                    <section>
+                        <dt>Feels like</dt>
+                        <dd id="feels"></dd>
+                    </section>
+                    <section>
+                        <dt>High</dt>
+                        <dd id="high"></dd>
+                    </section>
+                    <section>
+                        <dt>Low</dt>
+                        <dd id="low"></dd>
+                    </section>
+                </dl>
+            </section>
+
+            <section class="forecast">
+
+                <section aria-labelledby="hourly-title">
+                    <h2 id="hourly-title">Following hours</h2>
+                    <ol id="hourly" class="hourly">
+                        <li><span class="t"></span><span class="icon" aria-hidden="true"></span><span
+                                class="deg"></span><span class="pop"></span></li>
+                        <li><span class="t"></span><span class="icon" aria-hidden="true"></span><span
+                                class="deg"></span><span class="pop"></span></li>
+                        <li><span class="t"></span><span class="icon" aria-hidden="true"></span><span
+                                class="deg"></span><span class="pop"></span></li>
+                        <li><span class="t"></span><span class="icon" aria-hidden="true"></span><span
+                                class="deg"></span><span class="pop"></span></li>
+                        <li><span class="t"></span><span class="icon" aria-hidden="true"></span><span
+                                class="deg"></span><span class="pop"></span></li>
+                        <li><span class="t"></span><span class="icon" aria-hidden="true"></span><span
+                                class="deg"></span><span class="pop"></span></li>
+                        <li><span class="t"></span><span class="icon" aria-hidden="true"></span><span
+                                class="deg"></span><span class="pop"></span></li>
+                        <li><span class="t"></span><span class="icon" aria-hidden="true"></span><span
+                                class="deg"></span><span class="pop"></span></li>
+                        <li><span class="t"></span><span class="icon" aria-hidden="true"></span><span
+                                class="deg"></span><span class="pop"></span></li>
+                        <li><span class="t"></span><span class="icon" aria-hidden="true"></span><span
+                                class="deg"></span><span class="pop"></span></li>
+                        <li><span class="t"></span><span class="icon" aria-hidden="true"></span><span
+                                class="deg"></span><span class="pop"></span></li>
+                    </ol>
+                </section>
+
+                <section class="daily-section" aria-labelledby="daily-title">
+                    <h2 id="daily-title">7-day forecast</h2>
+                    <ul id="daily" class="daily">
+                        <li><span class="day"></span><span class="icon" aria-hidden="true"></span><span
+                                class="pop"></span><span class="lo"></span><span class="range"></span><span
+                                class="hi"></span></li>
+                        <li><span class="day"></span><span class="icon" aria-hidden="true"></span><span
+                                class="pop"></span><span class="lo"></span><span class="range"></span><span
+                                class="hi"></span></li>
+                        <li><span class="day"></span><span class="icon" aria-hidden="true"></span><span
+                                class="pop"></span><span class="lo"></span><span class="range"></span><span
+                                class="hi"></span></li>
+                        <li><span class="day"></span><span class="icon" aria-hidden="true"></span><span
+                                class="pop"></span><span class="lo"></span><span class="range"></span><span
+                                class="hi"></span></li>
+                        <li><span class="day"></span><span class="icon" aria-hidden="true"></span><span
+                                class="pop"></span><span class="lo"></span><span class="range"></span><span
+                                class="hi"></span></li>
+                        <li><span class="day"></span><span class="icon" aria-hidden="true"></span><span
+                                class="pop"></span><span class="lo"></span><span class="range"></span><span
+                                class="hi"></span></li>
+                        <li><span class="day"></span><span class="icon" aria-hidden="true"></span><span
+                                class="pop"></span><span class="lo"></span><span class="range"></span><span
+                                class="hi"></span></li>
+                    </ul>
+                </section>
+
+                <section aria-labelledby="details-title">
+                    <h2 id="details-title">Conditions</h2>
+                    <dl id="details" class="details">
+                        <section>
+                            <dt>Humidity</dt>
+                            <dd class="humidity"></dd>
+                        </section>
+                        <section>
+                            <dt>Wind</dt>
+                            <dd class="wind"></dd>
+                        </section>
+                        <section>
+                            <dt>UV index</dt>
+                            <dd class="uv"></dd>
+                        </section>
+                        <section>
+                            <dt>Pressure</dt>
+                            <dd class="pressure"></dd>
+                        </section>
+                        <section>
+                            <dt>Visibility</dt>
+                            <dd class="visibility"></dd>
+                        </section>
+                        <section>
+                            <dt>Sunrise / sunset</dt>
+                            <dd class="sunrise-sunset"></dd>
+                        </section>
+                    </dl>
+                </section>
+
+            </section>
+        </main>
+        <script src="script.js" defer></script>
+    </section>
+</body>
+
+</html>
